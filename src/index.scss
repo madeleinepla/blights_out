@@ -1,5 +1,31 @@
-@import "./styles/example.scss";
+// @import "./styles/example.scss";
 
-#main {
-  color: $color2;
+// #main {
+//   color: $color2;
+// }
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: black;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+.game-container {
+  position: relative;
+  width: 240px;
+  height: 160px;
+  margin: 0 auto;
+  margin-top: 20px;
+  outline: 1px solid white;
+
+  transform: scale(3) translateY(50%);
+}
+
+.game-container canvas {
+  image-rendering: pixelated;
 }
