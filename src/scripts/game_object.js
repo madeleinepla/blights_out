@@ -7,6 +7,7 @@ class GameObject {
     this.direction = config.direction;
     this.state = config.state;
     this.sprite = new Sprite(this, config);
+    this.map = config.map;
   }
 
 

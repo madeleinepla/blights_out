@@ -10,14 +10,16 @@ class Game {
 
   startGameloop() {
     const step = () => {
-
-      this.map.drawBackground(this.ctx);
+      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      this.map.drawBackground(this.ctx, this.map.player);
       this.map.player.updatePos();
       this.map.player.sprite.draw(this.ctx, this.map.player);
       this.map.player.sprite.updateAnimationProgress();
-      // this.map.monster.x += 1;
+      this.map.monster.updateState();
       this.map.monster.sprite.draw(this.ctx, this.map.player);
       this.map.monster.sprite.updateAnimationProgress();
+      this.ctx.drawImage(this.map.light, 0, 0);
+      
 
       requestAnimationFrame(() => {
         step();
