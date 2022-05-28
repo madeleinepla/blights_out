@@ -9,8 +9,16 @@ class GameMap {
     this.background = new Image();
     this.background.src = "./src/images/maps/blights_out_tilemap.png";
 
-    this.light = new Image();
-    this.light.src = "./src/images/characters/light.png";
+    this.light_right = new Image();
+    this.light_right.src = "./src/images/characters/light_right.png";
+    this.light_left = new Image();
+    this.light_left.src = "./src/images/characters/light_left.png";
+    this.light_up = new Image();
+    this.light_up.src = "./src/images/characters/light_up.png";
+    this.light_down = new Image();
+    this.light_down.src = "./src/images/characters/light_down.png";
+
+    this.light = this.light_right;
 
     this.player = new Player({
       x: utils.withGrid(7),
@@ -73,6 +81,20 @@ class GameMap {
     const y = utils.withGrid(4.5) - player.y;
 
     ctx.drawImage(this.background, x, y);
+  }
+
+  drawLight(ctx) {
+    console.log("drawing light")
+    if(this.player.direction === "right") {
+      this.light = this.light_right;
+    } else if (this.player.direction === "left") {
+      this.light = this.light_left;
+    } else if (this.player.direction === "up") {
+      this.light = this.light_up;
+    } else if (this.player.direction === "down") {
+      this.light = this.light_down;
+    } 
+    ctx.drawImage(this.light, 0, 0);
   }
 
 

@@ -13,12 +13,12 @@ class Monster extends GameObject {
   }
 
   prowl() {
+    // console.log("prowl")
     this.x = this.map.player.x - this.prowlDistance;
-    console.log("prowl")
   }
 
   attack() {
-    console.log("attack")
+    // console.log("attack")
     if (this.x < this.map.player.x) {
       this.distanceFromPlayer -= 0.5;
       this.x = this.map.player.x - this.distanceFromPlayer;
@@ -26,7 +26,7 @@ class Monster extends GameObject {
   }
 
   retreat() {
-    console.log("retreat")
+    // console.log("retreat")
     if (this.x > this.map.player.x - this.prowlDistance) {
       this.distanceFromPlayer += 0.5;
       this.x = this.map.player.x - this.distanceFromPlayer;
@@ -37,7 +37,6 @@ class Monster extends GameObject {
   }
 
   updateState() {
-    console.log(this.distanceFromPlayer / 16)
     if (this.map.player.direction === "left" && this.state === "attack") {
       this.state = "retreat"
     }

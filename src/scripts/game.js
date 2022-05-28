@@ -18,7 +18,7 @@ class Game {
       this.map.monster.updateState();
       this.map.monster.sprite.draw(this.ctx, this.map.player);
       this.map.monster.sprite.updateAnimationProgress();
-      this.ctx.drawImage(this.map.light, 0, 0);
+      this.map.drawLight(this.ctx);
       
 
       requestAnimationFrame(() => {
