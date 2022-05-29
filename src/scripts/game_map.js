@@ -7,7 +7,7 @@ class GameMap {
   constructor() {
     this.map = this;
     this.background = new Image();
-    this.background.src = "./src/images/maps/blights_out_tilemap.png";
+    this.background.src = "./src/images/maps/hallway_map2.png";
 
     this.light_right = new Image();
     this.light_right.src = "./src/images/characters/light_right.png";
@@ -72,6 +72,23 @@ class GameMap {
       map: this.map,
       state: "prowl"
     });
+
+    this.monster2 = new Monster({
+      x: this.player.x - utils.withGrid(6),
+      y: utils.withGrid(4),
+      src: "./src/images/monsters/monster4.png",
+      animations: {
+        "walk-right": [
+          [0, 1], [1, 1], [2, 1], [3, 1]
+        ],
+        "attack-right": [
+          [0, 0], [1, 0], [2, 0], [3, 0]
+        ]
+      },
+      currentAnimation: "walk-right",
+      map: this.map,
+      state: "prowl"
+    })
 
     
   }

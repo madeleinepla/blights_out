@@ -7,6 +7,8 @@ class Monster extends GameObject {
     super(config);
     this.prowlDistance = utils.withGrid(6)
     this.distanceFromPlayer = this.prowlDistance;
+    this.prowlVolume = 0.1;
+    this.currentProwlVolume = this.prowlVolume;
     
 
     setInterval(() => {
@@ -20,39 +22,46 @@ class Monster extends GameObject {
       }),
       attack: new Howl({
         src: ['./src/sounds/attack_sound.mp3']
+      }),
+      retreat: new Howl({
+        src: ['./src/sounds/retreat_sound.mp3']
       })
     }
   }
 
   prowl() {
-    // this.visible = false;
+    this.visible = false;
     this.x = this.map.player.x - this.prowlDistance;
     if (!this.sounds.prowl.playing()) {
       this.sounds.prowl.stop();
-      this.sounds.prowl.volume(0.3);
-      this.sounds.attack.stop();
+      this.sounds.prowl.volume(this.currentProwlVolume);
       this.sounds.prowl.play();
     }
   }
 
   attack() {
-    // this.visible = false;
+    this.visible = false;
     if (this.x < this.map.player.x) {
-      this.distanceFromPlayer -= 0.10;
+      this.distanceFromPlayer -= 0.25;
       this.x = this.map.player.x - this.distanceFromPlayer;
     }
-    if (!this.sounds.attack.playing()) {
-      this.sounds.attack.volume(0.3);
-      this.sounds.prowl.stop();
-      this.sounds.attack.play();
+    if (this.sounds.prowl.playing()) {
+      this.currentProwlVolume += 0.02
+      this.sounds.prowl.volume(this.currentProwlVolume);
     }
   }
 
   retreat() {
-    // this.visible = true;
+    this.visible = true;
     if (this.x > this.map.player.x - this.prowlDistance) {
       this.distanceFromPlayer += 0.5;
       this.x = this.map.player.x - this.distanceFromPlayer;
+      if (!this.sounds.retreat.playing()) {
+        this.sounds.prowl.stop();
+        this.currentProwlVolume = this.prowlVolume;
+        this.sounds.prowl.volume(this.currentProwlVolume);
+        this.sounds.retreat.play();
+      }
     } else {
       this.state = "prowl"
     }

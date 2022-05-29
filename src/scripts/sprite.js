@@ -53,6 +53,21 @@ class Sprite {
     }
   }
 
+  drawMonster(ctx, player) {
+    const x = this.gameObject.x - 8 + utils.withGrid(7) - player.x;
+    const y = this.gameObject.y - 38 + utils.withGrid(4.5) - player.y;
+    if (this.isLoaded && this.gameObject.visible) {
+      ctx.drawImage(
+        this.image,
+        this.animations[this.currentAnimation][this.currentAnimationFrame][0] * 64,
+        this.animations[this.currentAnimation][this.currentAnimationFrame][1] * 64,
+        64, 64,
+        x, y,
+        64, 64
+      );
+    }
+  }
+
 }
 
 export default Sprite;
