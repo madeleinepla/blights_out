@@ -1,4 +1,6 @@
 import GameMap from "./game_map";
+import { Howl, Howler } from 'howler';
+
 
 class Game {
   constructor(config) {
@@ -6,6 +8,13 @@ class Game {
     this.canvas = this.element.querySelector(".game-canvas");
     this.ctx = this.canvas.getContext("2d");
     this.map = new GameMap();
+
+    setTimeout(() => {
+      const music = new Howl({
+        src: ['./src/sounds/music.mp3']
+      });
+      music.play();
+    }, 3000)
   }
 
   startGameloop() {
