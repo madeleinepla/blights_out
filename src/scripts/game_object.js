@@ -8,6 +8,7 @@ class GameObject {
     this.state = config.state;
     this.sprite = new Sprite(this, config);
     this.map = config.map;
+    this.visible = true;
   }
 
 

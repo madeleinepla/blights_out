@@ -84,7 +84,6 @@ class GameMap {
   }
 
   drawLight(ctx) {
-    console.log("drawing light")
     if(this.player.direction === "right") {
       this.light = this.light_right;
     } else if (this.player.direction === "left") {

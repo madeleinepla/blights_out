@@ -6,19 +6,21 @@ class Monster extends GameObject {
     super(config);
     this.prowlDistance = utils.withGrid(6)
     this.distanceFromPlayer = this.prowlDistance;
+    
 
     setInterval(() => {
       this.state = "attack"
-    }, 5000);
+    }, utils.getRandomInt(3000,8000)
+    );
   }
 
   prowl() {
-    // console.log("prowl")
+    // this.visible = false;
     this.x = this.map.player.x - this.prowlDistance;
   }
 
   attack() {
-    // console.log("attack")
+    // this.visible = false;
     if (this.x < this.map.player.x) {
       this.distanceFromPlayer -= 0.5;
       this.x = this.map.player.x - this.distanceFromPlayer;
@@ -26,7 +28,7 @@ class Monster extends GameObject {
   }
 
   retreat() {
-    // console.log("retreat")
+    // this.visible = true;
     if (this.x > this.map.player.x - this.prowlDistance) {
       this.distanceFromPlayer += 0.5;
       this.x = this.map.player.x - this.distanceFromPlayer;

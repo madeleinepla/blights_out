@@ -41,7 +41,7 @@ class Sprite {
   draw(ctx, player) {
     const x = this.gameObject.x - 8 + utils.withGrid(7) - player.x;
     const y = this.gameObject.y - 14 + utils.withGrid(4.5) - player.y;
-    if (this.isLoaded) {
+    if (this.isLoaded && this.gameObject.visible) {
       ctx.drawImage(
       this.image,
       this.animations[this.currentAnimation][this.currentAnimationFrame][0] * 32,
