@@ -55,7 +55,7 @@ class Sprite {
 
   drawMonster(ctx, player) {
     const x = this.gameObject.x - 8 + utils.withGrid(7) - player.x;
-    const y = this.gameObject.y - 38 + utils.withGrid(4.5) - player.y;
+    const y = this.gameObject.y - 46 + utils.withGrid(4.5) - player.y;
     if (this.isLoaded && this.gameObject.visible) {
       ctx.drawImage(
         this.image,

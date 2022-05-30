@@ -22,14 +22,14 @@ class Game {
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
       this.map.drawBackground(this.ctx, this.map.player);
       this.map.player.updatePos();
-      this.map.player.sprite.draw(this.ctx, this.map.player);
       this.map.player.sprite.updateAnimationProgress();
+      this.map.player.sprite.draw(this.ctx, this.map.player);
       // this.map.monster.updateState();
       // this.map.monster.sprite.draw(this.ctx, this.map.player);
-      // this.map.monster2.updateState();
-      this.map.monster2.sprite.drawMonster(this.ctx, this.map.player);
-      this.map.monster2.sprite.updateAnimationProgress();
       // this.map.monster.sprite.updateAnimationProgress();
+      this.map.monster2.updateState();
+      this.map.monster2.sprite.updateAnimationProgress();
+      this.map.monster2.sprite.drawMonster(this.ctx, this.map.player);
       this.map.drawLight(this.ctx);
       
 

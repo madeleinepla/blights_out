@@ -41,27 +41,53 @@ class Player extends GameObject {
   }
 
   updatePos() {
-    const updating = this.directionUpdate[this.heldDirections]
-    if (updating) {
-      this.state = "walk-"
-      const property = updating[0];
-      const change = updating[1];
+    // const updating = this.directionUpdate[this.heldDirections]
+    // if (updating) {
+    //   this.state = "walk-"
+    //   const property = updating[0];
+    //   const change = updating[1];
 
-      if (property === "x") {
-        this.x += change;
-        if (change > 0) {
-          this.direction = "right"
-        } else if (change < 0) {
-          this.direction = "left"
-        } 
-      } else {
-        this.y += change
-        if (change > 0) {
-          this.direction = "down"
-        } else if (change < 0) {
+    //   if (property === "x") {
+    //     this.x += change;
+    //     if (change > 0) {
+    //       this.direction = "right"
+    //     } else if (change < 0) {
+    //       this.direction = "left"
+    //     } 
+    //   } else {
+    //     this.y += change
+    //     if (change > 0) {
+    //       this.direction = "down"
+    //     } else if (change < 0) {
+    //       this.direction = "up"
+    //     }
+    //   }
+    // } else {
+    //   this.state = "idle-"
+    // }
+
+    const updating = this.heldDirections
+    if (updating.length) {
+      this.state = "walk-"
+      console.log(updating)
+      
+      if (updating.includes("up")) {
+        if (!updating.includes("right")) {
           this.direction = "up"
         }
-      }
+        this.y -= 1
+      } else if (updating.includes("down")) {
+        if (!updating.includes("right")) {
+          this.direction = "down"
+        }
+        this.y += 1
+      } else if (updating.includes("left")) {
+        this.direction = "left"
+        this.x -= 1
+      } else if (updating.includes("right")) {
+        this.direction = "right"
+        this.x += 1
+      } 
     } else {
       this.state = "idle-"
     }

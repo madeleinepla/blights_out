@@ -17,12 +17,11 @@ class GameMap {
     this.light_up.src = "./src/images/characters/light_up.png";
     this.light_down = new Image();
     this.light_down.src = "./src/images/characters/light_down.png";
-
     this.light = this.light_right;
 
     this.player = new Player({
       x: utils.withGrid(7),
-      y: utils.withGrid(4),
+      y: utils.withGrid(5),
       src: "./src/images/characters/npc3_alter.png",
       animations: {
         "idle-down": [
@@ -56,26 +55,26 @@ class GameMap {
       map: this.map
     });
 
-    this.monster = new Monster({
-      x: this.player.x - utils.withGrid(6),
-      y: utils.withGrid(4),
-      src: "./src/images/monsters/monster1.png",
-      animations: {
-        "idle-right": [
-          [0, 0], [1, 0], [2, 0], [3, 0]
-        ], 
-        "attack-right": [
-          [0, 1], [1, 1], [2, 1], [3, 1]
-        ]
-      },
-      currentAnimation: "idle-right",
-      map: this.map,
-      state: "prowl"
-    });
+    // this.monster = new Monster({
+    //   x: this.player.x - utils.withGrid(6),
+    //   y: this.player.y,
+    //   src: "./src/images/monsters/monster1.png",
+    //   animations: {
+    //     "idle-right": [
+    //       [0, 0], [1, 0], [2, 0], [3, 0]
+    //     ], 
+    //     "attack-right": [
+    //       [0, 1], [1, 1], [2, 1], [3, 1]
+    //     ]
+    //   },
+    //   currentAnimation: "idle-right",
+    //   map: this.map,
+    //   state: "prowl"
+    // });
 
     this.monster2 = new Monster({
       x: this.player.x - utils.withGrid(6),
-      y: utils.withGrid(4),
+      y: this.player.y,
       src: "./src/images/monsters/monster4.png",
       animations: {
         "walk-right": [
