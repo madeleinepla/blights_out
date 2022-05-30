@@ -39,31 +39,20 @@ class Sprite {
   }
 
   draw(ctx, player) {
-    const x = this.gameObject.x - 8 + utils.withGrid(7) - player.x;
-    const y = this.gameObject.y - 14 + utils.withGrid(4.5) - player.y;
-    if (this.isLoaded && this.gameObject.visible) {
-      ctx.drawImage(
-      this.image,
-      this.animations[this.currentAnimation][this.currentAnimationFrame][0] * 32,
-      this.animations[this.currentAnimation][this.currentAnimationFrame][1] * 32,
-      32, 32,
-      x, y,
-      32, 32
-    );
-    }
-  }
+    const x = this.gameObject.x - this.gameObject.spriteNudgeX + utils.withGrid(7) - player.x;
+    const y = this.gameObject.y - this.gameObject.spriteNudgeY + utils.withGrid(4.5) - player.y;
 
-  drawMonster(ctx, player) {
-    const x = this.gameObject.x - 8 + utils.withGrid(7) - player.x;
-    const y = this.gameObject.y - 46 + utils.withGrid(4.5) - player.y;
+    const currentAnimationFrameX = this.animations[this.currentAnimation][this.currentAnimationFrame][0] * this.gameObject.spriteDim;
+    const currentAnimationFrameY = this.animations[this.currentAnimation][this.currentAnimationFrame][1] * this.gameObject.spriteDim;
+
     if (this.isLoaded && this.gameObject.visible) {
       ctx.drawImage(
         this.image,
-        this.animations[this.currentAnimation][this.currentAnimationFrame][0] * 64,
-        this.animations[this.currentAnimation][this.currentAnimationFrame][1] * 64,
-        64, 64,
+        currentAnimationFrameX,
+        currentAnimationFrameY,
+        this.gameObject.spriteDim, this.gameObject.spriteDim,
         x, y,
-        64, 64
+        this.gameObject.spriteDim, this.gameObject.spriteDim
       );
     }
   }

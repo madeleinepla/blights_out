@@ -9,27 +9,26 @@ class Game {
     this.ctx = this.canvas.getContext("2d");
     this.map = new GameMap();
 
-    setTimeout(() => {
-      const music = new Howl({
-        src: ['./src/sounds/music.mp3']
-      });
-      music.play();
-    }, 3000)
+    const music = new Howl({
+      src: ['./src/sounds/music.mp3']
+    });
+    music.play();
   }
 
   startGameloop() {
     const step = () => {
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
       this.map.drawBackground(this.ctx, this.map.player);
+
       this.map.player.updatePos();
       this.map.player.sprite.updateAnimationProgress();
       this.map.player.sprite.draw(this.ctx, this.map.player);
-      // this.map.monster.updateState();
-      // this.map.monster.sprite.draw(this.ctx, this.map.player);
-      // this.map.monster.sprite.updateAnimationProgress();
-      this.map.monster2.updateState();
-      this.map.monster2.sprite.updateAnimationProgress();
-      this.map.monster2.sprite.drawMonster(this.ctx, this.map.player);
+
+      this.map.monster.updateState();
+      this.map.monster.sprite.updateAnimationProgress();
+      // this.map.monster.sprite.drawMonster(this.ctx, this.map.player);
+      this.map.monster.sprite.draw(this.ctx, this.map.player);
+
       this.map.drawLight(this.ctx);
       
 
@@ -37,13 +36,12 @@ class Game {
         step();
       })
     }
+
     step();
   }
 
   init() {
     this.startGameloop();
-
-    
   }
 }
 

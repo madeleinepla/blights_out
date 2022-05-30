@@ -5,12 +5,13 @@ import { Howl, Howler } from 'howler';
 class Monster extends GameObject {
   constructor(config) {
     super(config);
-    this.prowlDistance = utils.withGrid(6)
+
+    this.prowlDistance = utils.withGrid(6);
     this.distanceFromPlayer = this.prowlDistance;
+
     this.prowlVolume = 0.1;
     this.currentProwlVolume = this.prowlVolume;
     
-
     setInterval(() => {
       this.state = "attack"
     }, utils.getRandomInt(8000,12000)
@@ -70,18 +71,17 @@ class Monster extends GameObject {
 
   updateState() {
     this.y = this.map.player.y;
+
     if (this.map.player.direction === "left" && this.state === "attack") {
       this.state = "retreat"
     }
     if (this.x === this.map.player.x) {
-      this.currentAnimation = "attack-right"
+      this.sprite.currentAnimation = "attack-right";
     }
     if (this.state === "prowl") this.prowl();
     if (this.state === "attack") this.attack();
     if (this.state === "retreat") this.retreat();
   }
-
-  
 }
 
 export default Monster;

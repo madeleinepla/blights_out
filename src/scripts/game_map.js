@@ -6,6 +6,7 @@ import utils from "./utils";
 class GameMap {
   constructor() {
     this.map = this;
+
     this.background = new Image();
     this.background.src = "./src/images/maps/hallway_map2.png";
 
@@ -52,27 +53,13 @@ class GameMap {
       currentAnimation: "idle-right",
       state: "idle-",
       direction: "right",
-      map: this.map
+      map: this.map,
+      spriteNudgeX: 8,
+      spriteNudgeY: 14,
+      spriteDim: 32
     });
 
-    // this.monster = new Monster({
-    //   x: this.player.x - utils.withGrid(6),
-    //   y: this.player.y,
-    //   src: "./src/images/monsters/monster1.png",
-    //   animations: {
-    //     "idle-right": [
-    //       [0, 0], [1, 0], [2, 0], [3, 0]
-    //     ], 
-    //     "attack-right": [
-    //       [0, 1], [1, 1], [2, 1], [3, 1]
-    //     ]
-    //   },
-    //   currentAnimation: "idle-right",
-    //   map: this.map,
-    //   state: "prowl"
-    // });
-
-    this.monster2 = new Monster({
+    this.monster = new Monster({
       x: this.player.x - utils.withGrid(6),
       y: this.player.y,
       src: "./src/images/monsters/monster4.png",
@@ -86,7 +73,10 @@ class GameMap {
       },
       currentAnimation: "walk-right",
       map: this.map,
-      state: "prowl"
+      state: "prowl",
+      spriteNudgeX: 40,
+      spriteNudgeY: 46,
+      spriteDim: 64
     })
 
     
