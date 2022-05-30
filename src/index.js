@@ -10,5 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     element: document.querySelector(".game-container")
   })
 
+
+
   game.init();
 })

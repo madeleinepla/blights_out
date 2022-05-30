@@ -12,7 +12,19 @@ class Game {
     const music = new Howl({
       src: ['./src/sounds/music.mp3']
     });
+    
     music.play();
+
+    const button = document.querySelector('.mute-btn');
+    button.addEventListener('click', event => {
+      console.log(event.target) // button#mute-btn
+      if (music.playing()) {
+        music.pause();
+      } else {
+        music.play();
+      }
+
+    });
   }
 
   startGameloop() {
@@ -26,12 +38,10 @@ class Game {
 
       this.map.monster.updateState();
       this.map.monster.sprite.updateAnimationProgress();
-      // this.map.monster.sprite.drawMonster(this.ctx, this.map.player);
       this.map.monster.sprite.draw(this.ctx, this.map.player);
 
       this.map.drawLight(this.ctx);
       
-
       requestAnimationFrame(() => {
         step();
       })

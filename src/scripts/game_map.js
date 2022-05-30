@@ -62,7 +62,7 @@ class GameMap {
     this.monster = new Monster({
       x: this.player.x - utils.withGrid(6),
       y: this.player.y,
-      src: "./src/images/monsters/monster4.png",
+      src: "./src/images/monsters/monster4_fix.png",
       animations: {
         "walk-right": [
           [0, 1], [1, 1], [2, 1], [3, 1]

@@ -75,9 +75,9 @@ class Monster extends GameObject {
     if (this.map.player.direction === "left" && this.state === "attack") {
       this.state = "retreat"
     }
-    if (this.x === this.map.player.x) {
-      this.sprite.currentAnimation = "attack-right";
-    }
+    // if (this.x === this.map.player.x) {
+    //   this.sprite.currentAnimation = "attack-right";
+    // }
     if (this.state === "prowl") this.prowl();
     if (this.state === "attack") this.attack();
     if (this.state === "retreat") this.retreat();
