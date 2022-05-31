@@ -1,5 +1,6 @@
 import GameMap from "./game_map";
 import splashPages from "./splash_pages";
+import utils from "./utils"
 import { Howl, Howler } from 'howler';
 
 
@@ -10,6 +11,7 @@ class Game {
     this.ctx = this.canvas.getContext("2d");
     this.map = new GameMap();
     this.requestId;
+    this.readyStart = false;
     this.isGameOver = false;
 
     const music = new Howl({
@@ -30,18 +32,10 @@ class Game {
       }
 
     });
-
-    
-
-    
   }
 
   startGameloop() {
     const step = () => {
-      // if (this.map.player.isColliding(this.map.player.x, this.map.player.y, this.map.finishLine)) {
-      //   splashPages.winPage();
-      // }
-
       if (this.map.player.isColliding(this.map.player.x, this.map.player.y, this.map.finishLine)) {
         this.gameOver("win");
       }
@@ -57,20 +51,26 @@ class Game {
 
       this.map.drawBackground(this.ctx, this.map.player);
 
-      this.map.player.updatePos();
-      this.map.player.sprite.updateAnimationProgress();
-      this.map.player.sprite.draw(this.ctx, this.map.player);
-
       this.map.monster.updateState();
       this.map.monster.sprite.updateAnimationProgress();
       this.map.monster.sprite.draw(this.ctx, this.map.player);
 
+      this.map.player.updatePos();
+      this.map.player.sprite.updateAnimationProgress();
+      this.map.player.sprite.draw(this.ctx, this.map.player);
+
       this.map.drawLight(this.ctx);
-      
-      if (!this.isGameOver) {
-        this.requestId = requestAnimationFrame(() => {
-          step();
-        })
+
+      this.map.meter.draw(this.ctx);
+
+      if (this.readyStart) {
+        if (!this.isGameOver) {
+          this.requestId = requestAnimationFrame(() => {
+            step();
+          })
+        }
+      } else {
+        this.readySetGo();
       }
     }
 
@@ -81,13 +81,55 @@ class Game {
     this.startGameloop();
   }
 
-  gameOver(outcome) {
-    this.isGameOver = true;
+  readySetGo() {
+    const ready = document.getElementById("ready")
     
+    setTimeout(() => {
+      ready.style.display = "block";
+
+      setTimeout(() => {
+        ready.querySelector("h1").innerHTML = "3";
+
+        setTimeout(() => {
+          ready.querySelector("h1").innerHTML = "2";
+
+          setTimeout(() => {
+            ready.querySelector("h1").innerHTML = "1";
+
+            setTimeout(() => {
+              ready.querySelector("h1").innerHTML = "Don't die";
+
+              setTimeout(() => {
+                ready.remove();
+                this.readyStart = true;
+                this.startGameloop();
+              }, 1000)
+            }, 1000)
+          }, 1000)
+        }, 1000)
+      }, 1000)
+    }, 500)
+    
+
+  }
+
+  gameOver(outcome) {
     if (outcome === "win") {
-      splashPages.winPage();
+      // this.isGameOver = true;
+      this.map.player.movable = false;
+      this.map.monster.state = "lose";
+      setTimeout(() => {
+        splashPages.winPage();
+      }, 3000)
     } else if (outcome === "lose") {
-      splashPages.losePage();
+      this.map.player.movable = false;
+      if (!this.map.monster.sounds.retreat.playing()) {
+        this.map.monster.sounds.retreat.play()
+      }
+      setTimeout(() => {
+        splashPages.losePage();
+      }, 3000)
+      
     }
   }
 }

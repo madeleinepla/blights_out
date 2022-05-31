@@ -14,6 +14,8 @@ body {
 
 h1 {
   color: white;
+  font-family: "Press Start 2P", cursive;
+  font-size: 16px;
 }
 
 .game-container {
@@ -27,17 +29,17 @@ h1 {
 }
 
 .game-container canvas {
+  position: fixed;
   image-rendering: pixelated;
 }
 
 #title {
   background-color: dimgray;
-  position: relative;
+  position: fixed;
   display: block;
   width: 240px;
   height: 160px;
   margin: 0 auto;
-  margin-top: 20px;
   outline: 1px solid white;
 }
 
@@ -50,12 +52,11 @@ h1 {
 
 #instructions {
   background-color: dimgray;
-  position: relative;
-  display: none;
+  position: fixed;
+  display: block;
   width: 240px;
   height: 160px;
   margin: 0 auto;
-  margin-top: 20px;
   outline: 1px solid white;
 }
 
@@ -66,6 +67,26 @@ h1 {
   padding: 10px;
 }
 
+#ready {
+  background-color: none;
+  position: fixed;
+  display: none;
+  width: 240px;
+  height: 160px;
+  margin: 0 auto;
+  outline: 1px solid white;
+}
+
+#ready h1 {
+  color: maroon;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  margin-top: 55px;
+  text-shadow: 2px 2px 4px black;
+  font-family: "Lucida Console", "Courier New", monospace;
+}
+
 #win {
   background-color: dimgray;
   position: relative;
@@ -73,9 +94,7 @@ h1 {
   width: 240px;
   height: 160px;
   margin: 0 auto;
-  margin-top: 20px;
   outline: 1px solid white;
-  transform: scale(1) translateY(-116%);
 }
 
 #win h1 {
@@ -87,14 +106,12 @@ h1 {
 
 #lose {
   background-color: dimgray;
-  position: relative;
+  position: fixed;
   display: none;
   width: 240px;
   height: 160px;
   margin: 0 auto;
-  margin-top: 20px;
   outline: 1px solid white;
-  transform: scale(1) translateY(-116%);
 }
 
 #lose h1 {

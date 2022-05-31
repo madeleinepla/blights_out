@@ -5,6 +5,7 @@ class Player extends GameObject {
     super(config);
     
     this.heldDirections = [];
+    this.movable = true;
 
     this.keycodes = {
       "ArrowUp": "up",
@@ -20,10 +21,17 @@ class Player extends GameObject {
     this.startKeyControl();
   }
 
+  keyDown(e) {
+    const dir = this.keycodes[e.code];
+    if (dir && this.heldDirections.indexOf(dir) === -1) {
+      this.heldDirections.unshift(dir);
+    }
+  }
+
   startKeyControl() {
     document.addEventListener("keydown", e => {
       const dir = this.keycodes[e.code];
-      if (dir && this.heldDirections.indexOf(dir) === -1) {
+      if (dir && this.heldDirections.indexOf(dir) === -1 && this.movable) {
         this.heldDirections.unshift(dir);
       }
     });

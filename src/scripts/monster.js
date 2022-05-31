@@ -100,6 +100,13 @@ class Monster extends GameObject {
     
   }
 
+  lose() {
+    this.x = this.map.player.x - utils.withGrid(2);
+    this.visible = true;
+    this.sprite.currentAnimation = "jump-right";
+    this.map.monster.sounds.prowl.stop()
+  }
+
   updateState() {
     this.y = this.map.player.y;
 
@@ -112,6 +119,7 @@ class Monster extends GameObject {
     if (this.state === "prowl") this.prowl();
     if (this.state === "attack") this.attack();
     if (this.state === "retreat") this.retreat();
+    if (this.state === "lose") this.lose();
   }
 
   mute(muting) {

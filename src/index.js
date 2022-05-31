@@ -26,15 +26,33 @@ document.addEventListener("DOMContentLoaded", () => {
   // });
 
   const title = document.getElementById('title')
-  const instructions = document.getElementById('instructions')
   title.addEventListener("click", () => {
-    title.remove();
-    instructions.style.display = "block";
-  })
-  instructions.addEventListener("click", () => {
-    instructions.remove();
-    game.init();
-  })
+    
+    title.style.opacity = "1.0"
 
-  // game.init();
+    const fadeTitle = setInterval(() => {
+      if (title.style.opacity > "0.0") {
+        title.style.opacity -= "0.01";
+      } else {
+        title.remove();
+        clearInterval(fadeTitle);
+      }
+    }, 5)
+
+    const instructions = document.getElementById('instructions')
+    instructions.addEventListener("click", () => {
+
+      instructions.style.opacity = "1.0"
+
+      const fadeInstructions = setInterval(() => {
+        if (instructions.style.opacity > "0.0") {
+          instructions.style.opacity -= "0.01";
+        } else {
+          instructions.remove();
+          clearInterval(fadeInstructions);
+        }
+      }, 5)
+      game.init();
+    })
+  })
 })

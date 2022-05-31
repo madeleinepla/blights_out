@@ -5,6 +5,7 @@ import utils from "./utils";
 import collisions from "./collisions";
 import boundary from "./boundary";
 import Boundary from "./boundary";
+import Meter from "./meter";
 
 
 class GameMap {
@@ -79,6 +80,9 @@ class GameMap {
         ],
         "attack-right": [
           [0, 0], [1, 0], [2, 0], [3, 0]
+        ],
+        "jump-right": [
+          [0, 2], [1, 2], [2, 2], [3, 2]
         ]
       },
       currentAnimation: "walk-right",
@@ -89,7 +93,20 @@ class GameMap {
       spriteDim: 64
     })
 
-    
+    this.meter = new Meter({
+      x: utils.withGrid(0.5),
+      y: utils.withGrid(8.5),
+      src: "fill/later",
+      animations: {
+
+      },
+      currentAnimation: "something",
+      map: this.map,
+      state: "idk",
+      spriteNudgeX: 40,
+      spriteNudgeY: 46,
+      spriteDim: 64
+    })
   }
 
   setCollisionMap() {
