@@ -32,6 +32,8 @@ class Game {
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
       this.map.drawBackground(this.ctx, this.map.player);
 
+      this.map.drawBoundaries(this.ctx, this.map.player);
+
       this.map.player.updatePos();
       this.map.player.sprite.updateAnimationProgress();
       this.map.player.sprite.draw(this.ctx, this.map.player);

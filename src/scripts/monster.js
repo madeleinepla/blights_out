@@ -11,6 +11,9 @@ class Monster extends GameObject {
 
     this.prowlVolume = 0.1;
     this.currentProwlVolume = this.prowlVolume;
+
+    this.points = 0;
+    this.addPoints = 0;
     
     setInterval(() => {
       this.state = "attack"
@@ -43,6 +46,7 @@ class Monster extends GameObject {
   attack() {
     // this.visible = false;
     if (this.x < this.map.player.x) {
+      this.addPoints += 1;
       this.distanceFromPlayer -= 0.25;
       this.x = this.map.player.x - this.distanceFromPlayer;
     }
@@ -64,6 +68,9 @@ class Monster extends GameObject {
         this.sounds.retreat.play();
       }
     } else {
+      this.points += this.addPoints;
+      this.addPoints = 0;
+      console.log(this.points);
       this.state = "prowl"
     }
     
@@ -75,9 +82,9 @@ class Monster extends GameObject {
     if (this.map.player.direction === "left" && this.state === "attack") {
       this.state = "retreat"
     }
-    // if (this.x === this.map.player.x) {
-    //   this.sprite.currentAnimation = "attack-right";
-    // }
+    if (this.x === this.map.player.x) {
+      this.sprite.currentAnimation = "attack-right";
+    }
     if (this.state === "prowl") this.prowl();
     if (this.state === "attack") this.attack();
     if (this.state === "retreat") this.retreat();

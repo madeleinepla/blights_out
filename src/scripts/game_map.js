@@ -2,6 +2,10 @@ import GameObject from "./game_object";
 import Player from "./player";
 import Monster from "./monster";
 import utils from "./utils";
+import collisions from "./collisions";
+import boundary from "./boundary";
+import Boundary from "./boundary";
+
 
 class GameMap {
   constructor() {
@@ -9,6 +13,9 @@ class GameMap {
 
     this.background = new Image();
     this.background.src = "./src/images/maps/hallway_map2.png";
+    this.collisionsMap = [];
+    this.boundaries = [];
+    this.setCollisionMap();
 
     this.light_right = new Image();
     this.light_right.src = "./src/images/characters/light_right.png";
@@ -80,6 +87,32 @@ class GameMap {
     })
 
     
+  }
+
+  setCollisionMap() {
+    for (let i = 0; i < collisions.length; i+= 240) {
+      this.collisionsMap.push(collisions.slice(i, i + 240))
+    }
+
+    this.collisionsMap.forEach((row, i) => {
+      row.forEach((ele, j) => {
+        if (ele === 233) {
+          this.boundaries.push(new Boundary([j * 16, i * 16]))
+        }
+      })
+    })
+  }
+
+  drawBoundaries(ctx, player) {
+    this.boundaries.forEach((boundary) => {
+      const x = boundary.x + utils.withGrid(7) - player.x;
+      const y = boundary.y + utils.withGrid(4.5) - player.y;
+  
+      ctx.fillStyle = 'red';
+      ctx.fillRect(x, y, boundary.width, boundary.height);
+
+      // player.isColliding(boundary);
+    })
   }
 
   drawBackground(ctx, player) {
