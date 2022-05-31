@@ -17,6 +17,9 @@ class GameMap {
     this.boundaries = [];
     this.setCollisionMap();
 
+    this.finishLine = new Boundary([utils.withGrid(237), utils.withGrid(10)]);
+    this.finishLine.height = 48;
+
     this.light_right = new Image();
     this.light_right.src = "./src/images/characters/light_right.png";
     this.light_left = new Image();
@@ -28,8 +31,8 @@ class GameMap {
     this.light = this.light_right;
 
     this.player = new Player({
-      x: utils.withGrid(7),
-      y: utils.withGrid(5),
+      x: utils.withGrid(230),
+      y: utils.withGrid(8),
       src: "./src/images/characters/npc3_alter.png",
       animations: {
         "idle-down": [
@@ -108,11 +111,17 @@ class GameMap {
       const x = boundary.x + utils.withGrid(7) - player.x;
       const y = boundary.y + utils.withGrid(4.5) - player.y;
   
-      ctx.fillStyle = 'red';
+      ctx.fillStyle = 'red, 0';
       ctx.fillRect(x, y, boundary.width, boundary.height);
-
-      // player.isColliding(boundary);
     })
+  }
+
+  drawFinishLine(ctx, player) {
+    const x = this.finishLine.x + utils.withGrid(7) - player.x;
+    const y = this.finishLine.y + utils.withGrid(4.5) - player.y;
+
+    ctx.fillStyle = 'green, 0';
+    ctx.fillRect(x, y, this.finishLine.width, this.finishLine.height);
   }
 
   drawBackground(ctx, player) {

@@ -1,5 +1,6 @@
 import GameObject from "./game_object";
 import utils from "./utils";
+import splashPages from "./splash_pages";
 import { Howl, Howler } from 'howler';
 
 class Monster extends GameObject {
@@ -14,6 +15,14 @@ class Monster extends GameObject {
 
     this.points = 0;
     this.addPoints = 0;
+
+    const distanceVolumes = {
+      "utils.withGrid(5)": this.currentProwlVolume = 0.2,
+      "utils.withGrid(4)": this.currentProwlVolume = 0.3,
+      "utils.withGrid(4)": this.currentProwlVolume = 0.4,
+      "utils.withGrid(2)": this.currentProwlVolume = 0.5,
+      "utils.withGrid(1)": this.currentProwlVolume = 0.6,
+    }
     
     setInterval(() => {
       this.state = "attack"
@@ -24,9 +33,9 @@ class Monster extends GameObject {
       prowl: new Howl({
         src: ['./src/sounds/prowl_sound.mp3']
       }),
-      attack: new Howl({
-        src: ['./src/sounds/attack_sound.mp3']
-      }),
+      // attack: new Howl({
+      //   src: ['./src/sounds/attack_sound.mp3']
+      // }),
       retreat: new Howl({
         src: ['./src/sounds/retreat_sound.mp3']
       })
@@ -38,7 +47,7 @@ class Monster extends GameObject {
     this.x = this.map.player.x - this.prowlDistance;
     if (!this.sounds.prowl.playing()) {
       this.sounds.prowl.stop();
-      this.sounds.prowl.volume(this.currentProwlVolume);
+      this.sounds.prowl.volume(this.prowlVolume);
       this.sounds.prowl.play();
     }
   }
@@ -51,7 +60,22 @@ class Monster extends GameObject {
       this.x = this.map.player.x - this.distanceFromPlayer;
     }
     if (this.sounds.prowl.playing()) {
-      this.currentProwlVolume += 0.02
+      if (this.distanceFromPlayer < utils.withGrid(6) && this.distanceFromPlayer > utils.withGrid(5)) {
+        this.currentProwlVolume = 0.1;
+        // console.log(this.currentProwlVolume);
+      } else if (this.distanceFromPlayer < utils.withGrid(5) && this.distanceFromPlayer > utils.withGrid(4)) {
+        this.currentProwlVolume = 0.2;
+        // console.log(this.currentProwlVolume);
+      } else if (this.distanceFromPlayer < utils.withGrid(4) && this.distanceFromPlayer > utils.withGrid(3)) {
+        this.currentProwlVolume = 0.3;
+        // console.log(this.currentProwlVolume);
+      } else if (this.distanceFromPlayer < utils.withGrid(3) && this.distanceFromPlayer > utils.withGrid(2)) {
+        this.currentProwlVolume = 0.4;
+        // console.log(this.currentProwlVolume);
+      } else if (this.distanceFromPlayer < utils.withGrid(2) && this.distanceFromPlayer > utils.withGrid(1)) {
+        this.currentProwlVolume = 0.5;
+        // console.log(this.currentProwlVolume);
+      }
       this.sounds.prowl.volume(this.currentProwlVolume);
     }
   }
@@ -64,7 +88,7 @@ class Monster extends GameObject {
       if (!this.sounds.retreat.playing()) {
         this.sounds.prowl.stop();
         this.currentProwlVolume = this.prowlVolume;
-        this.sounds.prowl.volume(this.currentProwlVolume);
+        this.sounds.retreat.volume(0.5)
         this.sounds.retreat.play();
       }
     } else {
@@ -88,6 +112,18 @@ class Monster extends GameObject {
     if (this.state === "prowl") this.prowl();
     if (this.state === "attack") this.attack();
     if (this.state === "retreat") this.retreat();
+  }
+
+  mute(muting) {
+    if (muting) {
+      console.log("muting");
+      this.sounds.prowl.mute(true);
+      this.sounds.retreat.mute(true);
+    } else {
+      console.log("unmuting");
+      this.sounds.prowl.mute(false);
+      this.sounds.retreat.mute(false);
+    }
   }
 }
 

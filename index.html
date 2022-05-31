@@ -5,33 +5,46 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <link rel="stylesheet" href="./dist/main.css" />
-  <script src="./dist/main.js"></script>
-  <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.js"></script>
-  <script>
-    setTimeout(() => {
-      const sound = new Howl({
-        src: ['./src/sounds/music.mp3']
-      });
-
-      console.log(sound)
-
-      sound.play()
-    }, 3000)
-    
-  </script> -->
+  <link text="text/css" rel="stylesheet" href="./dist/main.css" />
+  <script text="text/javascript" src="./dist/main.js"></script>
+  
   <title>Javascript Project</title>
 </head>
 
 <body>
-  <!-- <main id="main"></main> -->
+
+  <h1>hello</h1>
   <div>
     <button class="mute-btn">Mute</button>
   </div>
 
   <div class="game-container">
+
+    <div id="title">
+      <h1>Title</h1>
+      <p>click to continue</p>
+    </div>
+
+    <div id="instructions">
+      <h1>instructions</h1>
+      <p>here's some instructions blah blah blah</p>
+      <br>
+      <p>click to start</p>
+    </div>
+
     <canvas class="game-canvas" height="160" width="240"></canvas>
+
+    <div id="win">
+      <h1>you win!</h1>
+      <p>reload page to try again</p>
+    </div>
+  
+    <div id="lose">
+      <h1>you dead!</h1>
+      <p>reload page to try again</p>
+    </div>
   </div>
+
 </body>
 
 </html>

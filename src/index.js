@@ -6,11 +6,35 @@ import Player from "./scripts/player"
 
 
 document.addEventListener("DOMContentLoaded", () => {
-  const game = new Game({
+  let game = new Game({
     element: document.querySelector(".game-container")
   })
 
+  // const win = document.getElementById('win')
+  // win.addEventListener('click', event => {
+  //   if (win.style.display === "block") {
+  //     window.cancelAnimationFrame(game.requestId);
+  //     win.style.display = "none"
+  //   }
+  // });
 
+  // const lose = document.querySelector('.lose')
+  // lose.addEventListener('click', event => {
+  //   if (lose.style.display === "block") {
+  //     lose.style.display = "none"
+  //   }
+  // });
 
-  game.init();
+  const title = document.getElementById('title')
+  const instructions = document.getElementById('instructions')
+  title.addEventListener("click", () => {
+    title.remove();
+    instructions.style.display = "block";
+  })
+  instructions.addEventListener("click", () => {
+    instructions.remove();
+    game.init();
+  })
+
+  // game.init();
 })

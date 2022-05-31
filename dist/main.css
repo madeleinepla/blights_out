@@ -12,6 +12,10 @@ body {
   overflow: hidden;
 }
 
+h1 {
+  color: white;
+}
+
 .game-container {
   position: relative;
   width: 240px;
@@ -24,4 +28,78 @@ body {
 
 .game-container canvas {
   image-rendering: pixelated;
+}
+
+#title {
+  background-color: dimgray;
+  position: relative;
+  display: block;
+  width: 240px;
+  height: 160px;
+  margin: 0 auto;
+  margin-top: 20px;
+  outline: 1px solid white;
+}
+
+#title h1 {
+  color: maroon;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+#instructions {
+  background-color: dimgray;
+  position: relative;
+  display: none;
+  width: 240px;
+  height: 160px;
+  margin: 0 auto;
+  margin-top: 20px;
+  outline: 1px solid white;
+}
+
+#instructions h1 {
+  color: maroon;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+#win {
+  background-color: dimgray;
+  position: relative;
+  display: none;
+  width: 240px;
+  height: 160px;
+  margin: 0 auto;
+  margin-top: 20px;
+  outline: 1px solid white;
+  transform: scale(1) translateY(-116%);
+}
+
+#win h1 {
+  color: maroon;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+
+#lose {
+  background-color: dimgray;
+  position: relative;
+  display: none;
+  width: 240px;
+  height: 160px;
+  margin: 0 auto;
+  margin-top: 20px;
+  outline: 1px solid white;
+  transform: scale(1) translateY(-116%);
+}
+
+#lose h1 {
+  color: maroon;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
 }
