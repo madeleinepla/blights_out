@@ -97,7 +97,8 @@ class Game {
             ready.querySelector("h1").innerHTML = "1";
 
             setTimeout(() => {
-              ready.querySelector("h1").innerHTML = "Don't die";
+              ready.querySelector("h1").innerHTML = "";
+              ready.querySelector("h2").innerHTML = "Don't die";
 
               setTimeout(() => {
                 ready.remove();

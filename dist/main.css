@@ -12,12 +12,6 @@ body {
   overflow: hidden;
 }
 
-h1 {
-  color: white;
-  font-family: "Press Start 2P", cursive;
-  font-size: 16px;
-}
-
 .game-container {
   position: relative;
   width: 240px;
@@ -34,37 +28,52 @@ h1 {
 }
 
 #title {
-  background-color: dimgray;
+  background-color: none;
   position: fixed;
   display: block;
   width: 240px;
   height: 160px;
   margin: 0 auto;
-  outline: 1px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  image-rendering: pixelated;
 }
 
 #title h1 {
   color: maroon;
-  display: flex;
-  justify-content: center;
+  font-family: "Press Start 2P", cursive;
   padding: 10px;
+  font-size: 10px;
 }
 
 #instructions {
-  background-color: dimgray;
+  background-color: black;
   position: fixed;
   display: block;
   width: 240px;
   height: 160px;
   margin: 0 auto;
   outline: 1px solid white;
+  outline-offset: -6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  text-shadow: 2px 2px 4px black;
 }
 
 #instructions h1 {
   color: maroon;
-  display: flex;
-  justify-content: center;
-  padding: 10px;
+  font-family: "Press Start 2P", cursive;
+  font-size: 10px;
+}
+
+#instructions p {
+  color: white;
+  font-family: "Press Start 2P", cursive;
+  font-size: 6px;
 }
 
 #ready {
@@ -74,7 +83,6 @@ h1 {
   width: 240px;
   height: 160px;
   margin: 0 auto;
-  outline: 1px solid white;
 }
 
 #ready h1 {
@@ -84,39 +92,75 @@ h1 {
   padding: 10px;
   margin-top: 55px;
   text-shadow: 2px 2px 4px black;
-  font-family: "Lucida Console", "Courier New", monospace;
+  font-family: "Press Start 2P", cursive;
+}
+
+#ready h2 {
+  color: maroon;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -26px;
+  text-shadow: 2px 2px 4px black;
+  font-family: "Press Start 2P", cursive;
+  font-size: 18px;
 }
 
 #win {
-  background-color: dimgray;
+  background-color: none;
   position: relative;
   display: none;
   width: 240px;
   height: 160px;
   margin: 0 auto;
   outline: 1px solid white;
+  font-family: "Press Start 2P", cursive;
+  image-rendering: pixelated;
+  background-size: 240px 160px;
 }
 
 #win h1 {
   color: maroon;
   display: flex;
   justify-content: center;
-  padding: 10px;
+  padding: 15px;
+  font-size: 20px;
+}
+
+#win p {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-top: 90px;
+  font-size: 8px;
 }
 
 #lose {
-  background-color: dimgray;
+  background-color: none;
   position: fixed;
   display: none;
   width: 240px;
   height: 160px;
   margin: 0 auto;
-  outline: 1px solid white;
+  font-family: "Press Start 2P", cursive;
+  text-shadow: 2px 2px 4px black;
+  padding: 10px;
+  image-rendering: pixelated;
 }
 
 #lose h1 {
   color: maroon;
   display: flex;
   justify-content: center;
-  padding: 10px;
+  align-items: flex-start;
+  font-size: 14px;
+}
+
+#lose p {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  font-size: 8px;
 }

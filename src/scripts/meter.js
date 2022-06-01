@@ -7,7 +7,7 @@ class Meter extends GameObject {
 
   draw(ctx) {
     ctx.fillStyle = "red";
-    ctx.fillRect(this.x, this.y, 64, 16);
+    ctx.fillRect(this.x, this.y, 80, 16);
   }
 }
 

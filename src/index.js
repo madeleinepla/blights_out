@@ -26,6 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // });
 
   const title = document.getElementById('title')
+  title.style.backgroundImage = "url(./src/images/pages/title.gif)";
   title.addEventListener("click", () => {
     
     title.style.opacity = "1.0"

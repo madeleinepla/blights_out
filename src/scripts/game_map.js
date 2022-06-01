@@ -12,8 +12,12 @@ class GameMap {
   constructor() {
     this.map = this;
 
+    // this.titlePage = new Image();
+    // this.titlePage.src = "./src/images/pages/title.gif"
+
     this.background = new Image();
     this.background.src = "./src/images/maps/hallway_map2.png";
+
     this.collisionsMap = [];
     this.boundaries = [];
     this.setCollisionMap();

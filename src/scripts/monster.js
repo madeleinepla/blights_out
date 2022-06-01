@@ -43,7 +43,7 @@ class Monster extends GameObject {
   }
 
   prowl() {
-    // this.visible = false;
+    this.visible = false;
     this.x = this.map.player.x - this.prowlDistance;
     if (!this.sounds.prowl.playing()) {
       this.sounds.prowl.stop();
@@ -53,7 +53,7 @@ class Monster extends GameObject {
   }
 
   attack() {
-    // this.visible = false;
+    this.visible = false;
     if (this.x < this.map.player.x) {
       this.addPoints += 1;
       this.distanceFromPlayer -= 0.25;
@@ -81,7 +81,7 @@ class Monster extends GameObject {
   }
 
   retreat() {
-    // this.visible = true;
+    this.visible = true;
     if (this.x > this.map.player.x - this.prowlDistance) {
       this.distanceFromPlayer += 0.5;
       this.x = this.map.player.x - this.distanceFromPlayer;
