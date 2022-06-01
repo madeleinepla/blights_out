@@ -1,6 +1,5 @@
 import GameObject from "./game_object";
 import utils from "./utils";
-import splashPages from "./splash_pages";
 import { Howl, Howler } from 'howler';
 
 class Monster extends GameObject {

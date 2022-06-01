@@ -58,7 +58,6 @@ class Sprite {
   }
 
   drawMeter(ctx) {
-    console.log("called")
     const x = this.gameObject.x;
     const y = this.gameObject.y;
 

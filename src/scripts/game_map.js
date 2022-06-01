@@ -3,7 +3,6 @@ import Player from "./player";
 import Monster from "./monster";
 import utils from "./utils";
 import collisions from "./collisions";
-import boundary from "./boundary";
 import Boundary from "./boundary";
 import Meter from "./meter";
 
