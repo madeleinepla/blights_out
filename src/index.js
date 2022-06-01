@@ -10,21 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
     element: document.querySelector(".game-container")
   })
 
-  // const win = document.getElementById('win')
-  // win.addEventListener('click', event => {
-  //   if (win.style.display === "block") {
-  //     window.cancelAnimationFrame(game.requestId);
-  //     win.style.display = "none"
-  //   }
-  // });
-
-  // const lose = document.querySelector('.lose')
-  // lose.addEventListener('click', event => {
-  //   if (lose.style.display === "block") {
-  //     lose.style.display = "none"
-  //   }
-  // });
-
   const title = document.getElementById('title')
   title.style.backgroundImage = "url(./src/images/pages/title.gif)";
   title.addEventListener("click", () => {

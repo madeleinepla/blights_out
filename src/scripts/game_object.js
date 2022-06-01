@@ -14,7 +14,7 @@ class GameObject {
     this.spriteDim = config.spriteDim;
 
     this.map = config.map;
-    this.visible = true;
+    this.visible = config.visible;
   }
 }
 

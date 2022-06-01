@@ -21,12 +21,25 @@ body {
 //   font-size: 16px;
 // }
 
+.mute-btn {
+  background-color: gray;
+  border: 3px solid rgb(78, 78, 78);
+  color: maroon;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 30px;
+}
+
 .game-container {
   position: relative;
   width: 240px;
   height: 160px;
   margin: 0 auto;
-  margin-top: 20px;
   outline: 1px solid white;
 
   transform: scale(3) translateY(50%);
@@ -38,78 +51,69 @@ body {
 }
 
 #title {
-  // background-color: dimgray;
-  background-color: none;
   position: fixed;
   display: block;
   width: 240px;
   height: 160px;
-  margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: flex-end;
   image-rendering: pixelated;
+  padding: 10px;
 }
 
-#title h1 {
+#title h2 {
   color: maroon;
   font-family: 'Press Start 2P', cursive;
-  padding: 10px;
   font-size: 10px;
 }
 
 #instructions {
   background-color: black;
-  // background-color: none;
   position: fixed;
   display: block;
   width: 240px;
   height: 160px;
-  margin: 0 auto;
   outline: 1px solid white;
   outline-offset: -6px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   padding: 8px;
-  text-shadow: 2px 2px 4px black;
+  font-family: 'Press Start 2P', cursive;
 }
 
-#instructions h1 {
+#instructions h2 {
   color: maroon;
-  font-family: 'Press Start 2P', cursive;
   font-size: 10px;
 }
 
 #instructions p {
   color: white;
-  font-family: 'Press Start 2P', cursive;
   font-size: 6px;
+  line-height: 1.35;
+  margin-right: 5px;
+  margin-left: 5px;
 }
 
 #ready {
-  // background-color: dimgray;
-  background-color: none;
   position: fixed;
   display: none;
   width: 240px;
   height: 160px;
-  margin: 0 auto;
+  color: maroon;
 }
 
-#ready h1 {
-  color: maroon;
+#ready h2 {
   display: flex;
   justify-content: center;
-  padding: 10px;
-  margin-top: 55px;
+  margin-top: 65px;
   text-shadow: 2px 2px 4px black;
   font-family: 'Press Start 2P', cursive;
 }
 
-#ready h2 {
-  color: maroon;
+#ready h3 {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -120,20 +124,18 @@ body {
 }
 
 #win {
-  // background-color: dimgray;
   background-color: none;
   position: relative;
   display: none;
   width: 240px;
   height: 160px;
-  margin: 0 auto;
   outline: 1px solid white;
   font-family: 'Press Start 2P', cursive;
   image-rendering: pixelated;
   background-size: 240px 160px;
 }
 
-#win h1 {
+#win h2 {
   color: maroon;
   display: flex;
   justify-content: center;
@@ -152,7 +154,6 @@ body {
 }
 
 #lose {
-  // background-color: dimgray;
   background-color: none;
   position: fixed;
   display: none;
@@ -160,12 +161,11 @@ body {
   height: 160px;
   margin: 0 auto;
   font-family: 'Press Start 2P', cursive;
-  text-shadow: 2px 2px 4px black;
   padding: 10px;
   image-rendering: pixelated;
 }
 
-#lose h1 {
+#lose h2 {
   color: maroon;
   display: flex;
   justify-content: center;

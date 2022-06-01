@@ -5,8 +5,6 @@ class Boundary {
     this.width = 16;
     this.height = 16;
   }
-
-  
 }
 
 export default Boundary;

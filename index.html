@@ -9,9 +9,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link text="text/css" rel="stylesheet" href="./dist/main.css" />
+  <link rel="icon" type="image/x-icon" href="./src/images/favicon.png">
   <script text="text/javascript" src="./dist/main.js"></script>
   
-  <title>Javascript Project</title>
+  <title>Blights Out</title>
 </head>
 
 <body>
@@ -19,7 +20,7 @@
   <h1 id="">hello</h1>
 
   <div>
-    <button class="mute-btn">Mute</button>
+    <button class="mute-btn">silent mode: off</button>
   </div>
 
   <div class="game-container">
@@ -27,18 +28,23 @@
     <canvas class="game-canvas" height="160" width="240"></canvas>
     
     <div class="splash-page" id="instructions">
-      <h1>instructions</h1>
-      <p>here's some instructions blah blah blah</p>
-      <h1>click to start</h1>
+      <h2>instructions</h2>
+      <p>the blight is coming for you. the blight must consume all. 
+        only mom and dad's room is safe, they're just at the end of the hallway. 
+        you'll hear its groans and grumbles getting louder behind you. 
+        turn around to spook it with your light. 
+        the closer you let it get with each spook, the more "i'm a big boy" points you earn. 
+        turn wisely.</p>
+      <h2>click to start</h2>
     </div>
 
     <div class="splash-page" id="title">
-      <h1>click to continue</h1>
+      <h2>click to continue</h2>
     </div>
     
     <div id="ready">
-      <h1></h1>
       <h2></h2>
+      <h3></h3>
     </div>
 
     <div id="meter">
@@ -46,12 +52,12 @@
     </div>
 
     <div class="splash-page" id="win">
-      <h1>the end?</h1>
+      <h2>the end?</h2>
       <p>reload page to try again</p>
     </div>
   
     <div class="splash-page" id="lose">
-      <h1>you had one job</h1>
+      <h2>you had one job</h2>
       <p>reload page to try again</p>
     </div>
   </div>

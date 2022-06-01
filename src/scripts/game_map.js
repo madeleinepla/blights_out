@@ -12,9 +12,6 @@ class GameMap {
   constructor() {
     this.map = this;
 
-    // this.titlePage = new Image();
-    // this.titlePage.src = "./src/images/pages/title.gif"
-
     this.background = new Image();
     this.background.src = "./src/images/maps/hallway_map2.png";
 
@@ -23,6 +20,7 @@ class GameMap {
     this.setCollisionMap();
 
     this.finishLine = new Boundary([utils.withGrid(237), utils.withGrid(10)]);
+    this.finishLine.width = 16;
     this.finishLine.height = 48;
 
     this.light_right = new Image();
@@ -37,7 +35,7 @@ class GameMap {
 
     this.player = new Player({
       x: utils.withGrid(230),
-      y: utils.withGrid(8),
+      y: utils.withGrid(10),
       src: "./src/images/characters/npc3_alter.png",
       animations: {
         "idle-down": [
@@ -71,7 +69,8 @@ class GameMap {
       map: this.map,
       spriteNudgeX: 8,
       spriteNudgeY: 14,
-      spriteDim: 32
+      spriteDim: 32,
+      visible: true
     });
 
     this.monster = new Monster({
@@ -92,24 +91,26 @@ class GameMap {
       currentAnimation: "walk-right",
       map: this.map,
       state: "prowl",
-      spriteNudgeX: 40,
+      spriteNudgeX: 46,
       spriteNudgeY: 46,
-      spriteDim: 64
+      spriteDim: 64,
+      visible: false
     })
 
     this.meter = new Meter({
       x: utils.withGrid(0.5),
       y: utils.withGrid(8.5),
-      src: "fill/later",
+      src: "./src/images/maps/temp_meter.png",
       animations: {
 
       },
       currentAnimation: "something",
       map: this.map,
       state: "idk",
-      spriteNudgeX: 40,
-      spriteNudgeY: 46,
-      spriteDim: 64
+      spriteNudgeX: 0,
+      spriteNudgeY: 0,
+      spriteDim: 80,
+      visible: false
     })
   }
 
@@ -163,6 +164,12 @@ class GameMap {
       this.light = this.light_down;
     } 
     ctx.drawImage(this.light, 0, 0);
+  }
+
+  drawMeter(ctx) {
+    if (this.meter.visible) {
+      ctx.drawImage(this.meter.sprite.image, this.meter.x, this.meter.y);
+    }
   }
 
 

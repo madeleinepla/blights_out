@@ -10,9 +10,7 @@ class Game {
     this.canvas = this.element.querySelector(".game-canvas");
     this.ctx = this.canvas.getContext("2d");
     this.map = new GameMap();
-    this.requestId;
     this.readyStart = false;
-    this.isGameOver = false;
 
     const music = new Howl({
       src: ['./src/sounds/music.mp3']
@@ -22,13 +20,16 @@ class Game {
 
     const button = document.querySelector('.mute-btn');
     button.addEventListener('click', event => {
-      console.log(event.target) // button#mute-btn
       if (music.playing()) {
         music.pause();
         this.map.monster.mute(true);
+        this.map.meter.visible = true;
+        document.querySelector('.mute-btn').innerText = "silent mode: on";
       } else {
         music.play();
         this.map.monster.mute(false);
+        this.map.meter.visible = false;
+        document.querySelector('.mute-btn').innerText = "silent mode: off";
       }
 
     });
@@ -48,7 +49,7 @@ class Game {
       this.map.drawBoundaries(this.ctx, this.map.player);
       
       this.map.drawFinishLine(this.ctx, this.map.player);
-
+      
       this.map.drawBackground(this.ctx, this.map.player);
 
       this.map.monster.updateState();
@@ -61,14 +62,12 @@ class Game {
 
       this.map.drawLight(this.ctx);
 
-      this.map.meter.draw(this.ctx);
+      this.map.drawMeter(this.ctx);
 
       if (this.readyStart) {
-        if (!this.isGameOver) {
-          this.requestId = requestAnimationFrame(() => {
-            step();
-          })
-        }
+        requestAnimationFrame(() => {
+          step();
+        })
       } else {
         this.readySetGo();
       }
@@ -88,21 +87,22 @@ class Game {
       ready.style.display = "block";
 
       setTimeout(() => {
-        ready.querySelector("h1").innerHTML = "3";
+        ready.querySelector("h2").innerHTML = "3";
 
         setTimeout(() => {
-          ready.querySelector("h1").innerHTML = "2";
+          ready.querySelector("h2").innerHTML = "2";
 
           setTimeout(() => {
-            ready.querySelector("h1").innerHTML = "1";
+            ready.querySelector("h2").innerHTML = "1";
 
             setTimeout(() => {
-              ready.querySelector("h1").innerHTML = "";
-              ready.querySelector("h2").innerHTML = "Don't die";
+              ready.querySelector("h2").innerHTML = "";
+              ready.querySelector("h3").innerHTML = "don't die";
 
               setTimeout(() => {
                 ready.remove();
                 this.readyStart = true;
+                this.map.monster.waitToAttack();
                 this.startGameloop();
               }, 1000)
             }, 1000)
@@ -116,17 +116,18 @@ class Game {
 
   gameOver(outcome) {
     if (outcome === "win") {
-      // this.isGameOver = true;
       this.map.player.movable = false;
+      this.map.player.heldDirections = [];
       this.map.monster.state = "lose";
+
       setTimeout(() => {
         splashPages.winPage();
       }, 3000)
     } else if (outcome === "lose") {
       this.map.player.movable = false;
-      if (!this.map.monster.sounds.retreat.playing()) {
-        this.map.monster.sounds.retreat.play()
-      }
+      this.map.player.heldDirections = [];
+      this.map.monster.state = "win";
+
       setTimeout(() => {
         splashPages.losePage();
       }, 3000)
