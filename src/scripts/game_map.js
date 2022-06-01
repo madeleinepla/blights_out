@@ -34,8 +34,8 @@ class GameMap {
     this.light = this.light_right;
 
     this.player = new Player({
-      x: utils.withGrid(230),
-      y: utils.withGrid(10),
+      x: utils.withGrid(7),
+      y: utils.withGrid(5),
       src: "./src/images/characters/npc3_alter.png",
       animations: {
         "idle-down": [

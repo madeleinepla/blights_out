@@ -15,24 +15,44 @@ body {
   overflow: hidden;
 }
 
-// h1 {
-//   color: white;
-//   font-family: 'Press Start 2P', cursive;
-//   font-size: 16px;
-// }
+.header {
+  position: relative;
+  width: 720px;
+  height: 50px;
+  margin: 0 auto;
+  outline: 1px solid white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+}
+
+.fa-brands {
+  color: white;
+  padding: 5px;
+}
+
+h1 {
+  color: white;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 50px;
+  display: flex;
+  justify-content: center;
+}
 
 .mute-btn {
-  background-color: gray;
-  border: 3px solid rgb(78, 78, 78);
-  color: maroon;
+  background-color: white;
+  color: black;
   padding: 5px 10px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: 4px 2px;
+  margin-left: 5px;
   cursor: pointer;
   border-radius: 30px;
+  outline: 2px solid black;
+  outline-offset: -4px;
 }
 
 .game-container {
@@ -42,7 +62,7 @@ body {
   margin: 0 auto;
   outline: 1px solid white;
 
-  transform: scale(3) translateY(50%);
+  transform: scale(3) translateY(40%);
 }
 
 .game-container canvas {
@@ -91,8 +111,8 @@ body {
 
 #instructions p {
   color: white;
-  font-size: 6px;
-  line-height: 1.35;
+  font-size: 4px;
+  line-height: 1.5;
   margin-right: 5px;
   margin-left: 5px;
 }

@@ -10,35 +10,52 @@
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link text="text/css" rel="stylesheet" href="./dist/main.css" />
   <link rel="icon" type="image/x-icon" href="./src/images/favicon.png">
+  <script src="https://kit.fontawesome.com/9d94098e10.js" crossorigin="anonymous"></script>
   <script text="text/javascript" src="./dist/main.js"></script>
+
   
   <title>Blights Out</title>
 </head>
 
 <body>
 
-  <h1 id="">hello</h1>
+  <h1>Blights Out</h1>
+  
+  <div class="header">
 
-  <div>
     <button class="mute-btn">silent mode: off</button>
+
+    <div>
+      <a href="https://www.linkedin.com/in/madeleine-pla-27827519b/" target="_blank">
+        <i class="fa-brands fa-linkedin fa-2xl"></i>  
+      </a>
+      
+      <a href="https://github.com/madeleinepla" target="_blank">
+        <i class="fa-brands fa-github-square fa-2xl"></i>
+      </a>
+      
+    </div>
+   
   </div>
 
   <div class="game-container">
 
     <canvas class="game-canvas" height="160" width="240"></canvas>
     
-    <div class="splash-page" id="instructions">
+    <div id="instructions">
       <h2>instructions</h2>
       <p>the blight is coming for you. the blight must consume all. 
         only mom and dad's room is safe, they're just at the end of the hallway. 
         you'll hear its groans and grumbles getting louder behind you. 
-        turn around to spook it with your light. 
+        turn around to spook it with your flashlight. 
         the closer you let it get with each spook, the more "i'm a big boy" points you earn. 
         turn wisely.</p>
+
+        <p>(turn on silent mode to play with no sound and use the noise meter instead)</p>
       <h2>click to start</h2>
     </div>
 
-    <div class="splash-page" id="title">
+    <div id="title">
       <h2>click to continue</h2>
     </div>
     
@@ -47,16 +64,12 @@
       <h3></h3>
     </div>
 
-    <div id="meter">
-      
-    </div>
-
-    <div class="splash-page" id="win">
+    <div id="win">
       <h2>the end?</h2>
       <p>reload page to try again</p>
     </div>
   
-    <div class="splash-page" id="lose">
+    <div id="lose">
       <h2>you had one job</h2>
       <p>reload page to try again</p>
     </div>

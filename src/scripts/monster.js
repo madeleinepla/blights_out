@@ -109,7 +109,11 @@ class Monster extends GameObject {
     this.x = this.map.player.x - utils.withGrid(2);
     this.visible = true;
     this.sprite.currentAnimation = "jump-right";
-    this.map.monster.sounds.prowl.stop()
+    this.sounds.prowl.stop();
+    if (this.winSoundOnce > 0) {
+      this.sounds.retreat.play();
+      this.winSoundOnce -= 1;
+    }
   }
 
   updateState() {
