@@ -11,7 +11,8 @@ class GameObject {
     this.sprite = new Sprite(this, config);
     this.spriteNudgeX = config.spriteNudgeX;
     this.spriteNudgeY = config.spriteNudgeY;
-    this.spriteDim = config.spriteDim;
+    this.spriteDimX = config.spriteDimX;
+    this.spriteDimY = config.spriteDimY;
 
     this.map = config.map;
     this.visible = config.visible;

@@ -34,8 +34,8 @@ class GameMap {
     this.light = this.light_right;
 
     this.player = new Player({
-      x: utils.withGrid(7),
-      y: utils.withGrid(5),
+      x: utils.withGrid(230),
+      y: utils.withGrid(10),
       src: "./src/images/characters/npc3_alter.png",
       animations: {
         "idle-down": [
@@ -69,7 +69,8 @@ class GameMap {
       map: this.map,
       spriteNudgeX: 8,
       spriteNudgeY: 14,
-      spriteDim: 32,
+      spriteDimX: 32,
+      spriteDimY: 32,
       visible: true
     });
 
@@ -93,23 +94,43 @@ class GameMap {
       state: "prowl",
       spriteNudgeX: 46,
       spriteNudgeY: 46,
-      spriteDim: 64,
+      spriteDimX: 64,
+      spriteDimY: 64,
       visible: false
     })
 
     this.meter = new Meter({
       x: utils.withGrid(0.5),
       y: utils.withGrid(8.5),
-      src: "./src/images/maps/temp_meter.png",
+      src: "./src/images/maps/meter.png",
       animations: {
+        "level-1": [
+          [0, 0]
+        ],
+        "level-2": [
+          [0, 1]
+        ],
+        "level-3": [
+          [0, 2]
+        ],
+        "level-4": [
+          [0, 3]
+        ],
+        "level-5": [
+          [0, 4]
+        ],
+        "level-6": [
+          [0, 5]
+        ]
 
       },
-      currentAnimation: "something",
+      currentAnimation: "level-1",
       map: this.map,
       state: "idk",
       spriteNudgeX: 0,
       spriteNudgeY: 0,
-      spriteDim: 80,
+      spriteDimX: 80,
+      spriteDimY: 16,
       visible: false
     })
   }
@@ -166,11 +187,11 @@ class GameMap {
     ctx.drawImage(this.light, 0, 0);
   }
 
-  drawMeter(ctx) {
-    if (this.meter.visible) {
-      ctx.drawImage(this.meter.sprite.image, this.meter.x, this.meter.y);
-    }
-  }
+  // drawMeter(ctx) {
+  //   if (this.meter.visible) {
+  //     ctx.drawImage(this.meter.sprite.image, this.meter.x, this.meter.y);
+  //   }
+  // }
 
 
   

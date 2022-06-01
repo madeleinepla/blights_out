@@ -58,14 +58,19 @@ class Monster extends GameObject {
 
     if (this.distanceFromPlayer < utils.withGrid(6) && this.distanceFromPlayer > utils.withGrid(5)) {
       this.currentProwlVolume = 0.1;
+      this.map.meter.level = 2;
     } else if (this.distanceFromPlayer < utils.withGrid(5) && this.distanceFromPlayer > utils.withGrid(4)) {
       this.currentProwlVolume = 0.15;
+      this.map.meter.level = 3;
     } else if (this.distanceFromPlayer < utils.withGrid(4) && this.distanceFromPlayer > utils.withGrid(3)) {
       this.currentProwlVolume = 0.2;
+      this.map.meter.level = 4;
     } else if (this.distanceFromPlayer < utils.withGrid(3) && this.distanceFromPlayer > utils.withGrid(2)) {
       this.currentProwlVolume = 0.3;
+      this.map.meter.level = 5;
     } else if (this.distanceFromPlayer < utils.withGrid(2) && this.distanceFromPlayer > utils.withGrid(1)) {
       this.currentProwlVolume = 0.4;
+      this.map.meter.level = 6;
     }
 
     this.sounds.prowl.volume(this.currentProwlVolume);
@@ -90,6 +95,7 @@ class Monster extends GameObject {
         this.points += this.addPoints;
         this.addPoints = 0;
         this.state = "prowl";
+        this.map.meter.level = this.map.meter.defaultLevel;
       }
     }
     

@@ -107,14 +107,14 @@ h1 {
 #instructions h2 {
   color: maroon;
   font-size: 10px;
+  margin: 3px;
 }
 
 #instructions p {
   color: white;
-  font-size: 4px;
+  font-size: 5px;
   line-height: 1.5;
-  margin-right: 5px;
-  margin-left: 5px;
+  margin: 2px 5px 2px 5px;
 }
 
 #ready {
@@ -128,7 +128,7 @@ h1 {
 #ready h2 {
   display: flex;
   justify-content: center;
-  margin-top: 65px;
+  margin-top: 64px;
   text-shadow: 2px 2px 4px black;
   font-family: 'Press Start 2P', cursive;
 }
@@ -137,7 +137,7 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: -26px;
+  margin-top: -20px;
   text-shadow: 2px 2px 4px black;
   font-family: 'Press Start 2P', cursive;
   font-size: 18px;
@@ -161,7 +161,7 @@ h1 {
   justify-content: center;
   padding: 15px;
   font-size: 20px;
-  
+  margin-bottom: 85px;
 }
 
 #win p {
@@ -169,8 +169,8 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  margin-top: 90px;
   font-size: 8px;
+  line-height: 0.5;
 }
 
 #lose {

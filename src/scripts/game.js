@@ -37,6 +37,7 @@ class Game {
 
   startGameloop() {
     const step = () => {
+
       if (this.map.player.isColliding(this.map.player.x, this.map.player.y, this.map.finishLine)) {
         this.gameOver("win");
       }
@@ -62,7 +63,9 @@ class Game {
 
       this.map.drawLight(this.ctx);
 
-      this.map.drawMeter(this.ctx);
+      this.map.meter.updateLevel();
+      this.map.meter.sprite.updateAnimationProgress();
+      this.map.meter.sprite.drawMeter(this.ctx);
 
       if (this.readyStart) {
         requestAnimationFrame(() => {
@@ -119,6 +122,7 @@ class Game {
       this.map.player.movable = false;
       this.map.player.heldDirections = [];
       this.map.monster.state = "lose";
+      document.getElementById("score").innerHTML = "big boy points: " + this.map.monster.points;
 
       setTimeout(() => {
         splashPages.winPage();

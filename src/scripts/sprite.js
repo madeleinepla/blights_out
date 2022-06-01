@@ -42,17 +42,37 @@ class Sprite {
     const x = this.gameObject.x - this.gameObject.spriteNudgeX + utils.withGrid(7) - player.x;
     const y = this.gameObject.y - this.gameObject.spriteNudgeY + utils.withGrid(4.5) - player.y;
 
-    const currentAnimationFrameX = this.animations[this.currentAnimation][this.currentAnimationFrame][0] * this.gameObject.spriteDim;
-    const currentAnimationFrameY = this.animations[this.currentAnimation][this.currentAnimationFrame][1] * this.gameObject.spriteDim;
+    const currentAnimationFrameX = this.animations[this.currentAnimation][this.currentAnimationFrame][0] * this.gameObject.spriteDimX;
+    const currentAnimationFrameY = this.animations[this.currentAnimation][this.currentAnimationFrame][1] * this.gameObject.spriteDimY;
 
     if (this.isLoaded && this.gameObject.visible) {
       ctx.drawImage(
         this.image,
         currentAnimationFrameX,
         currentAnimationFrameY,
-        this.gameObject.spriteDim, this.gameObject.spriteDim,
+        this.gameObject.spriteDimX, this.gameObject.spriteDimY,
         x, y,
-        this.gameObject.spriteDim, this.gameObject.spriteDim
+        this.gameObject.spriteDimX, this.gameObject.spriteDimY
+      );
+    }
+  }
+
+  drawMeter(ctx) {
+    console.log("called")
+    const x = this.gameObject.x;
+    const y = this.gameObject.y;
+
+    const currentAnimationFrameX = this.animations[this.currentAnimation][this.currentAnimationFrame][0] * this.gameObject.spriteDimX;
+    const currentAnimationFrameY = this.animations[this.currentAnimation][this.currentAnimationFrame][1] * this.gameObject.spriteDimY;
+
+    if (this.gameObject.visible) {
+      ctx.drawImage(
+        this.image,
+        currentAnimationFrameX,
+        currentAnimationFrameY,
+        this.gameObject.spriteDimX, this.gameObject.spriteDimY,
+        x, y,
+        this.gameObject.spriteDimX, this.gameObject.spriteDimY
       );
     }
   }
