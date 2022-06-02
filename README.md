@@ -1,3 +1,5 @@
+![gameplay]([http://url/to/img.png](https://media.giphy.com/media/OeQGC1xbhf9vXj5m2p/giphy.gif))
+
 Background:
 
 Blights Out is a 2d top down game where you play an altered version of 
