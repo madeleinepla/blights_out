@@ -4,6 +4,8 @@
 
 [Play Now!](https://madeleinepla.github.io/javascript_project/)
 
+---------------------------------------------------------------
+
 Background:
 
 Blights Out is a 2d top down game where you play an altered version of 
