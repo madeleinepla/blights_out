@@ -7,7 +7,7 @@ const splashPages = {
 
   losePage() {
     const lose = document.getElementById('lose');
-    lose.style.backgroundImage = "url(./src/images/pages/you_lose.png)"
+    lose.style.backgroundImage = "url(./src/images/pages/you_lose3.png)"
     lose.style.display = "block";
   }
 }

@@ -62,18 +62,12 @@ class Player extends GameObject {
     }
   }
 
-  willCollide(direction) {
-    const nextMovePlayer = {...this};
-    if (direction === "up") {
-      nextMovePlayer.y -= 1;
-    } else if (direction === "down") {
-      nextMovePlayer.y += 1;
-    } else if (direction === "left") {
-      nextMovePlayer.x -= 1;
-    } else if (direction === "right") {
-      nextMovePlayer.x += 1;
-    }
+  willCollide(directions) {
+    const nextMovePlayer = { ...this };
     
+    nextMovePlayer.x += directions.x;
+    nextMovePlayer.y += directions.y;
+
     return this.map.boundaries.some((boundary) => {
       return this.isColliding(nextMovePlayer.x, nextMovePlayer.y, boundary);
     })
@@ -81,6 +75,10 @@ class Player extends GameObject {
 
   updatePos() {
     const updating = this.heldDirections;
+    let nextPos = {
+      x: 0,
+      y: 0
+    }
 
     if (updating.length) {
       this.state = "walk-"
@@ -90,40 +88,37 @@ class Player extends GameObject {
           this.direction = "up"
         }
 
-        if (!this.willCollide(this.direction)) {
-          this.y -= 1
-        }
+        nextPos.y -= 1;
       }
       if (updating.includes("down")) {
         if (!updating.includes("right")) {
           this.direction = "down"
         }
 
-        if (!this.willCollide(this.direction)) {
-          this.y += 1
-        }
+        nextPos.y += 1;
       }
       if (updating.includes("left")) {
         this.direction = "left"
         
-        if (!this.willCollide(this.direction)) {
-          this.x -= 1
-        }
+        nextPos.x -= 1
       }
       if (updating.includes("right")) {
         this.direction = "right"
         
-        if (!this.willCollide(this.direction)) {
-          this.x += 1
-        }
+        nextPos.x += 1
       }
+
+      if (!this.willCollide(nextPos)) {
+        this.x += nextPos.x;
+        this.y += nextPos.y;
+      }
+
     } else {
       this.state = "idle-"
     }
+    
     this.sprite.updateAnimation(this.state, this.direction);
   }
-
-
 }
 
 export default Player;

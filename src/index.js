@@ -5,6 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
     element: document.querySelector(".game-container")
   })
 
+  let gameStarted = false;
+
   const title = document.getElementById('title')
   title.style.backgroundImage = "url(./src/images/pages/title.gif)";
   title.addEventListener("click", () => {
@@ -33,7 +35,11 @@ document.addEventListener("DOMContentLoaded", () => {
           clearInterval(fadeInstructions);
         }
       }, 5)
-      game.init();
+
+      if (!gameStarted) {
+        game.init();
+        gameStarted = true;
+      }
     })
   })
 })

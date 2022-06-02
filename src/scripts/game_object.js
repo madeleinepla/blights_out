@@ -17,6 +17,10 @@ class GameObject {
     this.map = config.map;
     this.visible = config.visible;
   }
+
+  update() {
+
+  }
 }
 
 export default GameObject;
