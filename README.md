@@ -1,4 +1,4 @@
-![gameplay]([http://url/to/img.png](https://media.giphy.com/media/OeQGC1xbhf9vXj5m2p/giphy.gif))
+![gameplay](https://media.giphy.com/media/OeQGC1xbhf9vXj5m2p/giphy.gif)
 
 Background:
 
