@@ -3,7 +3,7 @@ import GameObject from "./game_object";
 class Player extends GameObject {
   constructor(config) {
     super(config);
-    
+
     this.heldDirections = [];
     this.movable = true;
 
@@ -63,7 +63,7 @@ class Player extends GameObject {
   }
 
   getValidMovement(directions) {
-    const validMovement = {x: 0, y: 0};
+    const validMovement = { x: 0, y: 0 };
 
     if (!this.map.boundaries.some((boundary) => {
       return this.isColliding(this.x + directions.x, this.y, boundary);
