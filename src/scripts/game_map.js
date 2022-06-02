@@ -35,7 +35,7 @@ class GameMap {
     this.player = new Player({
       x: utils.withGrid(7),
       y: utils.withGrid(5),
-      src: "./src/images/characters/npc3_alter.png",
+      src: "./src/images/characters/player.png",
       animations: {
         "idle-down": [
           [0, 0]
@@ -76,7 +76,7 @@ class GameMap {
     this.monster = new Monster({
       x: this.player.x - utils.withGrid(6),
       y: this.player.y,
-      src: "./src/images/monsters/monster4_fix.png",
+      src: "./src/images/monsters/monster.png",
       animations: {
         "walk-right": [
           [0, 1], [1, 1], [2, 1], [3, 1]

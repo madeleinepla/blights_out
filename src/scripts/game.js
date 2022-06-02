@@ -53,17 +53,17 @@ class Game {
       
       this.map.drawBackground(this.ctx, this.map.player);
 
-      this.map.monster.updateState();
+      this.map.monster.update();
       this.map.monster.sprite.updateAnimationProgress();
       this.map.monster.sprite.draw(this.ctx, this.map.player);
 
-      this.map.player.updatePos();
+      this.map.player.update();
       this.map.player.sprite.updateAnimationProgress();
       this.map.player.sprite.draw(this.ctx, this.map.player);
 
       this.map.drawLight(this.ctx);
 
-      this.map.meter.updateLevel();
+      this.map.meter.update();
       this.map.meter.sprite.updateAnimationProgress();
       this.map.meter.sprite.drawMeter(this.ctx);
 

@@ -7,7 +7,7 @@ class Meter extends GameObject {
     this.level = this.defaultLevel;
   }
 
-  updateLevel() {
+  update() {
     this.sprite.currentAnimation = "level-" + this.level;
   }
 }

@@ -73,7 +73,7 @@ class Player extends GameObject {
     })
   }
 
-  updatePos() {
+  update() {
     const updating = this.heldDirections;
     let nextPos = {
       x: 0,

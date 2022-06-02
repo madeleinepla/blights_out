@@ -21,7 +21,7 @@ class Monster extends GameObject {
     
     this.sounds = {
       prowl: new Howl({
-        src: ['./src/sounds/prowl_sound.mp3']
+        src: ['./src/sounds/prowl_sound_new.mp3']
       }),
       retreat: new Howl({
         src: ['./src/sounds/retreat_sound.mp3']
@@ -121,7 +121,7 @@ class Monster extends GameObject {
     }
   }
 
-  updateState() {
+  update() {
     this.y = this.map.player.y;
 
     if (this.map.player.direction === "left" && this.state === "attack") {
