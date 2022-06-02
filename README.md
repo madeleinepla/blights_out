@@ -2,7 +2,7 @@
 
 ![gameplay](https://media.giphy.com/media/OeQGC1xbhf9vXj5m2p/giphy.gif)
 
-[Play Now!](https://madeleinepla.github.io/javascript_project/)
+[Play Now!](https://madeleinepla.github.io/blights_out/)
 
 ---------------------------------------------------------------
 
