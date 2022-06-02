@@ -62,15 +62,22 @@ class Player extends GameObject {
     }
   }
 
-  willCollide(directions) {
-    const nextMovePlayer = { ...this };
-    
-    nextMovePlayer.x += directions.x;
-    nextMovePlayer.y += directions.y;
+  getValidMovement(directions) {
+    const validMovement = {x: 0, y: 0};
 
-    return this.map.boundaries.some((boundary) => {
-      return this.isColliding(nextMovePlayer.x, nextMovePlayer.y, boundary);
-    })
+    if (!this.map.boundaries.some((boundary) => {
+      return this.isColliding(this.x + directions.x, this.y, boundary);
+    })) {
+      validMovement.x += directions.x;
+    }
+
+    if (!this.map.boundaries.some((boundary) => {
+      return this.isColliding(this.x, this.y + directions.y, boundary);
+    })) {
+      validMovement.y += directions.y;
+    }
+
+    return validMovement;
   }
 
   update() {
@@ -99,24 +106,24 @@ class Player extends GameObject {
       }
       if (updating.includes("left")) {
         this.direction = "left"
-        
+
         nextPos.x -= 1
       }
       if (updating.includes("right")) {
         this.direction = "right"
-        
+
         nextPos.x += 1
       }
 
-      if (!this.willCollide(nextPos)) {
-        this.x += nextPos.x;
-        this.y += nextPos.y;
-      }
+      const validMovement = this.getValidMovement(nextPos)
+
+      this.x += validMovement.x;
+      this.y += validMovement.y;
 
     } else {
       this.state = "idle-"
     }
-    
+
     this.sprite.updateAnimation(this.state, this.direction);
   }
 }
