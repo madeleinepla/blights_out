@@ -10,6 +10,7 @@ const splashPages = {
     lose.style.backgroundImage = "url(./src/images/pages/you_lose.png)"
     lose.style.display = "block";
   }
+  
 }
 
 export default splashPages;
