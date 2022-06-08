@@ -6,7 +6,7 @@
 
 ---------------------------------------------------------------
 
-##Background:
+## Background:
 
 Blights Out is a 2d top down game where you play an altered version of 
 ‘red light, green light’. The player controls a child walking down 
@@ -17,9 +17,9 @@ make it to the parents’ room without getting caught.
 
 ---------------------------------------------------------------
 
-##Functionality & MVPs:
+## Functionality & MVPs:
 
-###In Blights Out, users will be able to:
+### In Blights Out, users will be able to:
 
 - traverse a dark hallway as the player using arrow keys or wasd controls
 - listen for a monster drawing near behind them
@@ -27,7 +27,7 @@ make it to the parents’ room without getting caught.
 - win the game by reaching the safety of their parents' room
 
 
-###In addition, this project will include:
+### In addition, this project will include:
 
 - an opening screen and 'instructions' page
 - an accessibilty option where a noise meter appears at the bottom of the game screen so
@@ -35,9 +35,9 @@ make it to the parents’ room without getting caught.
 
 ---------------------------------------------------------------
 
-##Technologies, Libraries, APIs:
+## Technologies, Libraries, APIs:
 
-###This project will use:
+### This project will use:
 - Canvas API to render visual elements
 - Howler.js for sound control and music
 - Webpack and Babel to bundle and transpile the source JavaScript code
@@ -45,8 +45,8 @@ make it to the parents’ room without getting caught.
 
 ---------------------------------------------------------------
 
-##Bonus features:
+## Bonus features:
 
-###In the future, I would like to add:
+### In the future, I would like to add:
 - Cut scenes at the beginning and end of of game to give it more of a narrative
 - Additional difficulty levels, adding obsticles, power-ups, etc.
